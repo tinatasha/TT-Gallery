@@ -14,7 +14,7 @@ SECRET_KEY = '@t1s-drqef5gtj6abbq9o&@)-@a4@5%hywdn2h--6eg5kassc6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mapichaaa.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','mapichaaa.herokuapp.com']
 
 
 # Application definition
