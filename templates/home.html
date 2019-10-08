@@ -1,0 +1,145 @@
+{% load static from staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<link rel="stylesheet" href="authentic/static/css/styles.css">
+</head>
+
+<body>
+		
+	<script>
+		function myFunction() {
+			/* Get the text field */
+			var copyText = document.getElementById("myInput");
+
+			/* Select the text field */
+			copyText.select();
+			copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+			/* Copy the text inside the text field */
+			document.execCommand("copy");
+
+			/* Alert the copied text */
+
+		}
+
+		function toggle() {
+			var x = document.getElementById("image_details");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+		}
+
+
+
+
+	</script>
+	<div id="search_form">
+			<div class="col-sm-4 col-md-4 navbar-right">
+	
+				<form class="navbar-form" role="search" action="">
+	
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search Image Category" name="image">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit"><i
+									class="glyphicon glyphicon-search"></i></button>
+						</div>
+					</div>
+	
+				</form>
+			</div>
+	
+		</div>
+		
+	<div id="location_buttons">
+			<button>
+				ALL
+			</button>
+			<button>
+				CITADEL
+			</button>
+			<button>
+				C-137
+			</button>
+			<button>
+				FROOPYLAND
+			</button>
+			<button>
+				AREA-51
+			</button>
+		</div>
+		
+	
+	
+	
+
+
+
+	
+	<div>
+		<table class="table-dark">
+				{% for image in images %}	
+		<tr scope="row">
+			<td scope="col">
+							<div>
+									<img onclick="toggle()" src="{{ image.image.url }}" align="left" width="600px">
+							</div>
+			</td>
+			<td scope="col">
+					<div style="display:none; text-align: center; width: 100%;" class="col-md-9" id="image_details">
+							<p>
+								<br>
+								<span style="color:blueviolet;">
+										Name:
+								</span>
+								<br>
+								{{image.image_name}}
+								<br>
+								<span style="color:blueviolet;">
+										Description:
+								</span>
+								<br>
+								{{image.image_description}}
+								<br>
+								<span style="color:blueviolet;">
+										Location:
+								</span>
+								<br>
+								<span style="color:blueviolet;">
+										Category:
+								</span>
+								<br>
+								<div id="image_link" style="color:black;">
+									<input style="color: deeppink;" type="text" value="{{image.image_link}}" id="myInput">
+									<!-- The button used to copy the text -->
+									<button onclick="myFunction()">
+										Copy
+									</button>
+								</div>
+							</p>
+						</div>
+			</td>
+		</tr>
+		
+
+			
+	
+	
+		{% endfor %}
+		</table>
+	
+</body>
+
+</html>
